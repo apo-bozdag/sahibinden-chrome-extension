@@ -38,7 +38,7 @@ export function is_damage(description) {
     '\\d+(\\.\\d+)* agir hasar', 'agir hasar \\d+(\\.\\d+)*',
     'tramer agir \\d+(\\.\\d+)*', 'trameragir \\d+(\\.\\d+)*',
     'arabam agirhasarli', 'arabam agir hasarli',
-    'agri hasar var', 'bin agri hasar', 'agir hasir kayitlidir', 'agir'
+    'agri hasar var', 'bin agri hasar', 'agir hasir kayitlidir', 'agir', 'hasar'
   ]
   const light_damage = ['hasar kaydi bulunmakta', 'aracimizin bazi sorunlari vardir',
     'aracimizda hasar kaydi vardir', ' hasar kaydi var', ' hasar kayitli ',
