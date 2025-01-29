@@ -94,6 +94,8 @@ async function allAdsConf() {
               return 'severe-damage spro-label--danger'
             } else if (damage_type === damageTypeEnum.LIGHT) {
               return 'light-damage spro-label--attention'
+            } else if (damage_type === damageTypeEnum.CHANGED) {
+              return 'light-damage spro-label--brand'
             } else {
               return 'no-damage spro-label--accent'
             }
@@ -104,6 +106,8 @@ async function allAdsConf() {
               return 'Ağır Hasar kaydı var'
             } else if (damage_type === damageTypeEnum.LIGHT) {
               return 'Hasar kaydı var'
+            } else if (damage_type === damageTypeEnum.CHANGED) {
+              return 'Değişen'
             } else {
               return 'Hasarsız'
             }

@@ -38,7 +38,7 @@ export function is_damage(description) {
     '\\d+(\\.\\d+)* agir hasar', 'agir hasar \\d+(\\.\\d+)*',
     'tramer agir \\d+(\\.\\d+)*', 'trameragir \\d+(\\.\\d+)*',
     'arabam agirhasarli', 'arabam agir hasarli',
-    'agri hasar var', 'bin agri hasar', 'agir hasir kayitlidir'
+    'agri hasar var', 'bin agri hasar', 'agir hasir kayitlidir', 'agir', 'hasar'
   ]
   const light_damage = ['hasar kaydi bulunmakta', 'aracimizin bazi sorunlari vardir',
     'aracimizda hasar kaydi vardir', ' hasar kaydi var', ' hasar kayitli ',
@@ -76,17 +76,23 @@ export function is_damage(description) {
     'tramer;\\d+(\\.\\d+)*', 'pert kaydi yoktur', 'tremer kaydi var',
     'hasar sms', 'hasar resim', 'hasar sorgulama fot', 'hasar fot', 'tramer kaydi sadece',
     'tramer resimlerde', '\\d+(\\.\\d+)*tramer', 'tirameri var', 'ramer kaydi resim',
-    'lira tramer', 'hasar \\d+(\\.\\d+)*', 'bin hasar kaydi'
+    'lira tramer', 'hasar \\d+(\\.\\d+)*', 'bin hasar kaydi', 'bin tl hasar', 'bn tl tramer'
   ]
+  const changed = ['degisen olup', 'degisen var', 'camurluk degisen', 'kapi degisen',
+'kaput degisen', 'far degisen', 'bagaj degisen', 'bagaj kapagi degisen', 'bagaj kapak degisen', 'degisim'
+]
 
   const severe_damage_regex = new RegExp(severe_damage.join('|'), 'i');
   const light_damage_regex = new RegExp(light_damage.join('|'), 'i');
+  const changed_regex = new RegExp(changed.join('|'), 'i');
 
   let return_value = damageTypeEnum.CLEAR;
   if (severe_damage_regex.test(description)) {
     return_value = damageTypeEnum.SEVERE;
   } else if (light_damage_regex.test(description)) {
     return_value = damageTypeEnum.LIGHT;
+  } else if (changed_regex.test(description)) {
+    return_value = damageTypeEnum.CHANGED;
   }
 
   return return_value;
@@ -101,7 +107,7 @@ export function is_painted(description) {
     'boyali\\d+(\\.\\d+)*', 'boyali \\d+(\\.\\d+)*',
     'alti boya', 'boyasi mevcut', 'boya var', 'boyanmistir', 'boya vr', 'boya takintisi',
     'boya mevcut', 'temizlik boyasi', 'boyalari var',
-    '\\d+(\\.\\d+)* boya', 'boyalar mevcut'
+    '\\d+(\\.\\d+)* boya', 'boyalar mevcut', 'boyalari mevcut', 'boyanmis'
   ]
 
   const painted_regex = new RegExp(painted.join('|'), 'i');
